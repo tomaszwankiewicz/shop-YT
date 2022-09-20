@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Carbon\Factory;
-use Couchbase\View;
-use Illuminate\Console\Application;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,9 +13,9 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Factory|View|Application|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View|Application|
      */
-    public function index()
+    public function index(): View|Application|Factory
     {
         return view('users.index', [
             'users'=> User::all()
