@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloWorldController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,8 @@ Route::get('/hello', function ()
     return 'Hello World2';
 });
 
+Route::get('/users/list', [UserController::class,'index'])->middleware('auth');
 Route::get('/helloworld', [HelloWorldController::class,'show']);
-
 
 Auth::routes();
 
